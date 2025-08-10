@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "title": "Generated Schema",
+  "description": "Generated from JSON data",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "format": "uri"
+    }
+  },
+  "patternProperties": {
+    "^[a-zA-Z0-9_-]+$": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "The URL of the WordPress site on the remote server"
+        },
+        "path": {
+          "type": "string",
+          "description": "The PATH to the WordPress installation on the remote server"
+        },
+        "ssh": {
+          "type": "object",
+          "properties": {
+            "host": {
+              "type": "string",
+              "description": "The remote server's SSH hostname. Can be an IP address"
+            },
+            "port": {
+              "type": "string",
+              "description": "The remote server's SSH port number"
+            },
+            "user": {
+              "type": "string",
+              "description": "The username configured on the remote server for SSH connections"
+            },
+            "key": {
+              "type": "string",
+              "description": "Name of the private key file used for connections to this remote server. It should match a corresponding file in the 'keys' directory. Keys may also be passed as environment secrets at runtime, in which case this property can be omitted"
+            }
+          },
+          "required": [
+            "host",
+            "port",
+            "user"
+          ]
+        }
+      },
+      "required": [
+        "path",
+        "ssh",
+        "url"
+      ]
+    }
+  },
+  "additionalProperties": false
+}
